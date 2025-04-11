@@ -1,47 +1,88 @@
-# Bank-Churn-Prediction# Bank-Customer-Churn-Prediction
+# 💳 Bank Churn Prediction
 
-![image](https://user-images.githubusercontent.com/58620359/174948746-5dc3418a-8296-4cc8-9561-f8f12ca9a0a4.png)
+Predicting customer churn in the banking sector using demographic and financial data, enhanced with machine learning techniques and visual insights.
 
-## Problem Statement :
+## 🔍 Overview
 
-Customer churn or customer attrition is a tendency of clients or customers to abandon a brand and stop being a paying client of a particular business or organization. The percentage of customers that discontinue using a company’s services or products during a specific period is called a customer churn rate. Several bad experiences (or just one) are enough, and a customer may quit. And if a large chunk of unsatisfied customers churn at a time interval, both material losses and damage to reputation would be enormous.
+This project analyzes customer behavior and builds predictive models to determine which clients are likely to leave a bank. By leveraging historical data, we identify key churn indicators and provide actionable strategies to retain high-risk customers.
 
-A reputed bank “ABC BANK” wants to predict the Churn rate. Create a model by using different machine learning approaches that can predict the best result. 
+## 📊 Dataset
 
-## Dataset Description :
+The dataset contains 10,000 customer records with the following features:
 
-This is a public dataset, The dataset format is given below.
- 
-Inside the dataset, there are 10000 rows and 14 different columns.
+- **Demographics**: Age, Gender, Geography
+- **Financial Data**: Balance, Credit Score, Estimated Salary
+- **Account Info**: Tenure, Number of Products, Credit Card status, Active Member
+- **Target**: `Exited` (1 if customer churned, 0 otherwise)
 
-The target column here is **Exited** here.
+## 📈 Exploratory Data Analysis
 
-Click [here](https://www.kaggle.com/datasets/louishgy/churn-modelling?select=Churn_Modelling.csv) to download the dataset.
+Key insights from EDA:
 
-The details about all the columns are given in the following data dictionary -
+- **Churn Rate**: 20.37%
+- **High-Risk Segments**:
+  - Customers aged **40–50**
+  - Customers from **Germany**
+  - **Female** customers
+  - Customers with **high balances** (₹100k–₹150k)
+  - Customers with only **one product**
+  - **Inactive members**
 
-| Variable | Definition |
-| ------------- | ------------- |
-| RowNumber | Unique Row Number |
-| CustomerId | Unique Customer Id |
-| Surname | Surname of a customer |
-| CreditScore | Credit Score of each Customer  |
-| Geography | Geographical Location of Customers |
-| City_Category | Category of the City (A,B,C) |
-| Gender | Sex of Customers |
-| Age | Age of Each Customer |
-| Tenure | Number of years |
-| Balance | Current Balance of Customers |
-| NumOfProducts | Number of Products |
-| HasCrCard | If a customer has a credit card or not |
-| IsActiveMember | If a customer is active or not |
-| EstimatedSalary | Estimated Salary of each Customer |
-| **Exited** | **Customer left the bank or Not (Target Variable)** |
+Visualizations:  
+✔ Gender-wise Churn  
+✔ Age Group Analysis  
+✔ Product Holding Impact  
+✔ Geography-wise Trends  
+✔ Violin & Boxplots for Balance and Salary  
+✔ Correlation Heatmaps & Pairplots  
 
-## Working Flow :
-In order to create a model these are the following procedure - 
+## 🧠 Modeling Pipeline
 
-- Split the dataset in 70% of Train set and 30% of Test Set
-- Feature engineering 
-- Check the accuracy score for both Training and Test Set
-- Compare the accuracies for both Training and Test set, in order to check for the overfitting issues 
+### 🔧 Preprocessing
+
+- Label Encoding & One-Hot Encoding
+- Feature Scaling using `RobustScaler`
+- Dimensionality Reduction via `PCA`
+- Class Balancing using `SMOTE`
+
+### 🤖 Models Trained
+
+| Model                  | Accuracy |
+|------------------------|----------|
+| Logistic Regression    | ~70.6%   |
+| Decision Tree          | ~82.3%   |
+| Random Forest          | ~88.4%   |
+| K-Nearest Neighbors    | ~88.6%   |
+| **XGBoost (Best)**     | **~89.9%**   |
+
+### 📌 XGBoost Evaluation
+
+- **Accuracy**: 82.4%
+- **Precision (Churned)**: 0.55
+- **Recall (Churned)**: 0.60
+- **F1-score (Churned)**: 0.57  
+  *(Model is strong for non-churn cases but needs improvement for churned ones)*
+
+### 📊 SHAP Interpretability
+
+Used **SHAP values** to interpret the feature importance and understand the decision process behind XGBoost predictions.
+
+## 🧾 Recommendations
+
+1. **Engage Female Customers** with targeted offers.
+2. **Focus on Ages 40–50** with proactive support.
+3. **Reward Mid-Balance Clients** with loyalty perks.
+4. **Cross-Sell Products** to single-product holders.
+5. **Re-engage Inactive Users** via app nudges and benefits.
+
+## 🛠️ Tech Stack
+
+- Python
+- Pandas, NumPy, Seaborn, Matplotlib
+- Scikit-learn
+- XGBoost
+- SHAP
+- Imbalanced-learn (SMOTE)
+
+## 📂 File Structure
+
